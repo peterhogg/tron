@@ -4,3 +4,5 @@ Player two(yellow) controlls his character with the arrow keys
 The goal of the game is to avoid any locations that have allready been coloured, and the screen boundries
 
 When the round is completed, press the space bar to replay
+
+*NOTE* This game requires pygame to run
