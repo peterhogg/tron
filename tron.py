@@ -40,7 +40,7 @@ p2colour = yellow
 p2score = 0
 
 #Stores a bool as to whether or not the square has been traveled already
-grid = [[False for temp in xrange(x/20)] for temp in xrange(y/20)]
+grid = [[False for temp in range(int(x/20))] for temp in range(int(y/20))]
 
 #Sets up the loop for the game
 done = False
@@ -100,7 +100,7 @@ while not done:
                 p2x = (x*3)/4
                 p2y = (y*3)/4
                 p2colour = yellow
-                grid = [[False for temp in xrange(x/20)] for temp in xrange(y/20)]
+                grid = [[False for temp in range(int(x/20))] for temp in range(int(y/20))]
                 pygame.draw.rect(screen,p1colour,[p1x + 1,p1y + 1,(x/40) -1,(x/40)-1])
                 pygame.draw.rect(screen,p2colour,[p2x + 1,p2y + 1,(x/40) -1,(x/40)-1])
                 pygame.display.flip()
@@ -122,10 +122,10 @@ while not done:
         p1alive = False
     #checks if player 1 will collide with another square
     else:
-        if grid[p1x/20 -1][p1y/20 -1]:      
+        if grid[int(p1x/20) -1][int(p1y/20) -1]:      
             p1alive = False
         #sets the sqare p1 is on to true
-        grid[p1x/20 -1][p1y/20 -1] = True
+        grid[int(p1x/20) -1][int(p1y/20) -1] = True
 
     #checks player 2 will travel off the map
     if p2x >=800 or p2x < 0 or p2y >=800 or p2y <0:
@@ -133,11 +133,11 @@ while not done:
         p2colour = red
     #checks if player 2 will collide with another square
     else:
-        if grid[p2x/20 -1][p2y/20 -1]:      
+        if grid[int(p2x/20) -1][int(p2y/20) -1]:      
             p2alive = False
             p2colour = red
         #sets the sqare p1 is on to true
-        grid[p2x/20 -1][p2y/20 -1] = True
+        grid[int(p2x/20) -1][int(p2y/20) -1] = True
 
     #Updates player 1's position if they have not collided
     if p1alive and p2alive:
@@ -168,12 +168,12 @@ while not done:
 
     if p1alive and p2alive == False:
         p1score = p1score + 1
-        print p1score
-        print p2score
+        print("1st player score: ",p1score)
+        print("2nd player score : ", p2score)
     if p2alive and p1alive == False:
         p2score = p2score + 1
-        print p1score
-        print p2score
+        print("1st player score: ",p1score)
+        print("2nd player score : ", p2score)
  
-    clock.tick(15)
+    clock.tick(5)
 pygame.quit()
